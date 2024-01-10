@@ -18,7 +18,6 @@ const ViewCourse = ({ params }) => {
 
   useEffect(() => {
     user ? getCourse() : null
-    // eslint-disable-next-line
   }, [user]);
 
   const getCourse = async () => {

@@ -18,12 +18,10 @@ const CoursePreview = ({ params }) => {
       if (user?.primaryEmailAddress?.emailAddress && params.courseId) {
         params.courseId ? getCourse(params.courseId, user?.primaryEmailAddress?.emailAddress) : null
       }
-      // eslint-disable-next-line
   }, [user]);
 
   const getCourse = (params, email) => {
     getCourseById(params, email).then((response) => {
-      // console.log(response);
       setCourseDetails(response.courseList);
       setUserCourse(response.userEnrollCourses);
     })
