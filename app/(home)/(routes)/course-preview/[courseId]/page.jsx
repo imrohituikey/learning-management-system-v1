@@ -9,17 +9,20 @@ import { useUser } from '@clerk/nextjs'
 
 
 const CoursePreview = ({ params }) => {
-
+  const [mount, setMount] = useState(false)
   const [courseDetails, setCourseDetails] = useState();
   const [userCourse, setUserCourse] = useState();
 
   const { user } = useUser();
 
   useEffect(() => {
-    if (user?.primaryEmailAddress?.emailAddress && params.courseId) {
-      params.courseId ? getCourse(params.courseId, user?.primaryEmailAddress?.emailAddress) : null
-    }
-  }, [user]);
+    if(!mount){
+      setMount(true);
+      if (user?.primaryEmailAddress?.emailAddress && params.courseId) {
+        params.courseId ? getCourse(params.courseId, user?.primaryEmailAddress?.emailAddress) : null
+      }
+    }  
+  }, [user,mount]);
 
   const getCourse = (params, email) => {
     getCourseById(params, email).then((response) => {
