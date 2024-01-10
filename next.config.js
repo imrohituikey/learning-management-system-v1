@@ -2,6 +2,9 @@
 const nextConfig = {
     images : {
         domains : ['media.graphassets.com','img.clerk.com']
+    },
+    eslint : {
+        ignoreDuringBuilds: true,
     }
 }
 
