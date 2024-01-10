@@ -10,6 +10,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     user ? getUserCourse() : null;
+      // eslint-disable-next-line
   }, [user]);
   
   const getUserCourse = async () => {
