@@ -4,8 +4,12 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import { FaPaperclip } from 'react-icons/fa';
 import Button from '../../../../components/Button.jsx';
+import { MdOutlineLogout } from "react-icons/md";
+import { SignOutButton } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
 
 const Profile = () => {
+  const router = useRouter();
   const { user } = useUser();
   const [users, setUsers] = useState();
 
@@ -23,12 +27,12 @@ const Profile = () => {
       <div className="mt-6 border-t border-gray-100">
         <div className='flex items-center justify-center mt-4'>
           <Image
-          className='rounded-full'
-          width={100}
-          height={100}
-          src={users.imageUrl}
-          alt={users.firstName}
-           />
+            className='rounded-full'
+            width={100}
+            height={100}
+            src={users.imageUrl}
+            alt={users.firstName}
+          />
         </div>
         <dl className="divide-y divide-gray-100">
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -92,7 +96,10 @@ const Profile = () => {
           </div>
         </dl>
       </div>
-      <div className='flex items-center justify-center'>
+      <div className='flex items-center justify-center gap-8'>
+        <SignOutButton className="bg-red-600 hover:bg-red-700 p-2 px-6 rounded-md text-white text-[14px]" signOutCallback={() => router.push('/browse')}>
+          Sign out
+        </SignOutButton>
         <Button className={""}>
           Edit
         </Button>

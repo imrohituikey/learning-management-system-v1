@@ -2,10 +2,8 @@ import React from 'react'
 
 const layout = ({ children }) => {
     return (
-        <div className='flex item-center justify-center mt-6 md:mt-12 lg:mt-24'>
-            <div className=''>
+        <div className='h-screen flex items-center justify-center'>
             {children}
-            </div>
         </div>
     )
 }
